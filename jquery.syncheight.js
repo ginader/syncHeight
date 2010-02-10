@@ -1,4 +1,4 @@
-/**
+﻿/**
  * syncHeight - jQuery plugin to automagically Snyc the heights of columns
  * Made to seemlessly work with the CCS-Framework YAML (yaml.de)
  * @requires jQuery v1.0.3
@@ -12,24 +12,16 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  *
- * Version: 1.1
+ * Version: 1.2
  *
  * Usage:
- 	$(document).ready(function(){
+ 	$(window).load(function(){
 		$('p').syncHeight();
 	});
  */
 
 (function($) {
-	$.fn.syncHeight = function(config) {
-		var defaults = {
-			updateOnResize: false	// re-sync element heights after a browser resize event (useful in flexible layouts)
-		};
-		var options = $.extend(defaults, config);
-		
-		var e = this;
-		
-		var max = 0;
+    var getHeightProperty = function() {
 		var browser_id = 0;
 		var property = [
 			// To avoid content overflow in synchronised boxes on font scaling, we 
@@ -43,24 +35,50 @@
 		if($.browser.msie && $.browser.version < 7){
 			browser_id = 1;
 		}
-		
+        
+        return { 'name': property[browser_id][0], 
+                 'autoheightVal': property[browser_id][1] };
+    };
+    
+    $.getSyncedHeight = function(selector) {
+        var max = 0;
+        var heightProperty = getHeightProperty();
 		// get maximum element height ...
-		$(this).each(function() {
+		$(selector).each(function() {
 			// fallback to auto height before height check ...
-			$(this).css(property[browser_id][0],property[browser_id][1]);
-			var val=$(this).height();
+			$(this).css(heightProperty.name, heightProperty.autoheightVal);
+			var val = $(this).height();
 			if(val > max){
 			   max = val;
 			}
 		});
+        return max;
+    };
+    
+	$.fn.syncHeight = function(config) {
+		var defaults = {
+			updateOnResize: false,	// re-sync element heights after a browser resize event (useful in flexible layouts)
+            height: false
+		};
+		var options = $.extend(defaults, config);
 		
+		var e = this;
+		
+		var max = 0;
+        var heightPropertyName = getHeightProperty().name;
+		
+        if(typeof(options.height) === "number") {
+            max = options.height;
+        } else {
+            max = $.getSyncedHeight(this);
+        }
 		// set synchronized element height ...
  		$(this).each(function() {
-  			$(this).css(property[browser_id][0],max+'px');
+  			$(this).css(heightPropertyName, max+'px');
 		});
 		
 		// optional sync refresh on resize event ...
-		if (options.updateOnResize == true) {
+		if (options.updateOnResize === true) {
 			$(window).resize(function(){ 
 				$(e).syncHeight();
 			});
