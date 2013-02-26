@@ -1,5 +1,5 @@
 jQuery Synch Heights Plugin
-=============================
+===========================
 
 jQuery Plugin that automatically syncs the height properties of the elements that match the given selector.
 
@@ -13,10 +13,10 @@ jQuery Plugin that automatically syncs the height properties of the elements tha
 
     Parameters:
     -----------
-    height (default: false): set a static number in pixel (e.g. 250) to prevent from automatically figuring 
+    height (default: false): set a static number in pixel (e.g. 250) to prevent from automatically figuring
                              out the common height and using the given number.
     updateOnResize (default: false): automatically sync elements if browser window gets resized
 
 See also
 --------
-* german info: http://blog.ginader.de/archives/2007/09/10/Spaltenhoehen-mit-jQuery-synchronisieren.php
+* YAML4 Docs: http://www.yaml.de/docs/index.html#yaml-addons (subsection: SyncHeight)
