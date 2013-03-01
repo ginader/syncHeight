@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>test</title>
+	<style>
+	* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+	p{
+		border:1px solid red;
+		padding:5px;
+	}
+	</style>
+	<script src="jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery.syncheight.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	$(window).load(function(){
+		// sync the height of all the p elements in this document
+		$('p').syncHeight({updateOnResize: true});
+		// unsync they're heights again when the Browser window is narrower than 500px
+		$(window).resize(function(){
+			if($(window).width() < 500){
+				$('p').unSyncHeight();
+			}
+		});
+	});
+	</script>
+</head>
+
+<body>
+<p>blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla blabla bla blabla bla</p>
+	<p>blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla </p>
+	<p>blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla blablabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla </p>
+	<p>blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla blabla blabla bla blabla blabla blabla bla blabla bla </p>
+
+</body>
+</html>
