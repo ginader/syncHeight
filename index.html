@@ -15,7 +15,14 @@
 	<script src="jquery.syncheight.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 	$(window).load(function(){
+		// sync the height of all the p elements in this document
 		$('p').syncHeight({updateOnResize: true});
+		// unsync they're heights again when the Browser window is narrower than 500px
+		$(window).resize(function(){
+			if($(window).width() < 500){
+				$('p').unSyncHeight();
+			}
+		});
 	});
 	</script>
 </head>

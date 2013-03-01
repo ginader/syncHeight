@@ -1,7 +1,7 @@
 ﻿/**
  * syncHeight - jQuery plugin to automagically Snyc the heights of columns
  * Made to seemlessly work with the CCS-Framework YAML (yaml.de)
- * @requires jQuery v1.0.3
+ * @requires jQuery v1.0.3 or newer
  *
  * http://blog.ginader.de/dev/syncheight/
  *
@@ -12,9 +12,10 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  *
- * Version: 1.3
+ * Version: 1.4
  *
  * Changelog
+ * * v1.4: new Method unSyncHeight() that removes previously added syncs i.e. for responsive layouts
  * * v1.3: compatibility fix for jQuery 1.9.x (removed $.browser)
  *
  * Usage:
@@ -91,5 +92,12 @@
 			});
 		}
 		return this;
+	};
+
+	$.fn.unSyncHeight = function(config) {
+        var heightPropertyName = getHeightProperty().name;
+		$(this).each(function() {
+			$(this).css(heightPropertyName, '');
+		});
 	};
 })(jQuery);
