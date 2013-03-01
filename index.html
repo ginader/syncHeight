@@ -15,10 +15,7 @@
 	<script src="jquery.syncheight.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 	$(window).load(function(){
-		$('p').syncHeight();
-		$(window).resize(function(){
-			$('p').syncHeight();
-		});
+		$('p').syncHeight({updateOnResize: true});
 	});
 	</script>
 </head>
