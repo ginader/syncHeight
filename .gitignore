@@ -1,1 +1,6 @@
-/.DS_Store
+# system files
+*.DS_Store
+*Thumbs.db
+
+# node module directories
+*node_modules/
