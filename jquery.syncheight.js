@@ -32,7 +32,7 @@
  */
 
 (function($) {
-    var getHeightProperty = function() {
+  var getHeightProperty = function() {
     var browser_id = 0;
     var property = [
       // To avoid content overflow in synchronised boxes on font scaling, we
@@ -51,13 +51,15 @@
       browser_id = 1;
     }
 
-        return { 'name': property[browser_id][0],
-                 'autoheightVal': property[browser_id][1] };
+    return {
+      'name': property[browser_id][0],
+      'autoheightVal': property[browser_id][1]
     };
+  };
 
-    $.getSyncedHeight = function(selector) {
-        var max = 0;
-        var heightProperty = getHeightProperty();
+  $.getSyncedHeight = function(selector) {
+    var max = 0;
+    var heightProperty = getHeightProperty();
     // get maximum element height ...
     $(selector).each(function() {
       // fallback to auto height before height check ...
@@ -67,26 +69,26 @@
         max = val;
       }
     });
-        return max;
-    };
+    return max;
+  };
 
   $.fn.syncHeight = function(config) {
     var defaults = {
       updateOnResize: false,  // re-sync element heights after a browser resize event (useful in flexible layouts)
-            height: false
+      height: false
     };
+
     var options = $.extend(defaults, config);
-
     var e = this;
-
     var max = 0;
-        var heightPropertyName = getHeightProperty().name;
+    var heightPropertyName = getHeightProperty().name;
 
-        if(typeof(options.height) === "number") {
-            max = options.height;
-        } else {
-            max = $.getSyncedHeight(this);
-        }
+    if(typeof(options.height) === "number") {
+      max = options.height;
+    } else {
+      max = $.getSyncedHeight(this);
+    }
+
     // set synchronized element height ...
     $(this).each(function() {
       $(this).css(heightPropertyName, max+'px');
