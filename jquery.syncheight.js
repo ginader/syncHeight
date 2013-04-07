@@ -47,7 +47,7 @@
 			browserVersion = bMatch[2] || "0";
 
 		// check for IE6 ...
-		if(browser == 'msie' && browserVersion < 7){
+		if(browser === 'msie' && browserVersion < 7){
 			browser_id = 1;
 		}
 
@@ -101,8 +101,8 @@
 		return this;
 	};
 
-	$.fn.unSyncHeight = function(config) {
-        var heightPropertyName = getHeightProperty().name;
+	$.fn.unSyncHeight = function() {
+    var heightPropertyName = getHeightProperty().name;
 		$(this).each(function() {
 			$(this).css(heightPropertyName, '');
 		});
