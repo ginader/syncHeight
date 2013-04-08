@@ -1,5 +1,5 @@
 ﻿/**
- * syncHeight - jQuery plugin to automagically Snyc the heights of columns
+ * syncHeight - jQuery plugin to automagically Sync the heights of columns
  * Made to seemlessly work with the CCS-Framework YAML (yaml.de)
  * @requires jQuery v1.0.3 or newer
  *
