@@ -1,4 +1,4 @@
-jQuery Synch Heights Plugin
+jQuery Sync Heights Plugin
 ===========================
 
 jQuery Plugin that automatically syncs the height properties of the elements that match the given selector.
