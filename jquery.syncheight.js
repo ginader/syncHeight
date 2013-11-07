@@ -96,7 +96,7 @@
 
     // optional sync refresh on resize event ...
     if (options.updateOnResize === true) {
-      $(window).resize(function(){
+      $(window).bind('resize.syncHeight', function(){
         $(e).syncHeight();
       });
     }
@@ -104,6 +104,9 @@
   };
 
   $.fn.unSyncHeight = function() {
+    // unbind optional resize event ...
+    $(window).unbind('resize.syncHeight');
+
     var heightPropertyName = getHeightProperty().name;
     $(this).each(function() {
       $(this).css(heightPropertyName, '');
