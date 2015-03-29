@@ -8,13 +8,26 @@ Usage:
     // use $(window).load instead of $(document).ready to wait until all images have been loaded.
     // Otherwise common height may be calculated without taking all images into account
     $(window).load(function(){
-        $('p').syncHeight({ 'updateOnResize': true});
-    });
-    // and to undo the syncing again run (here when the window is smaller than 500px): 
-    $(window).resize(function(){
-        if($(window).width() < 500){
-            $('p').unSyncHeight();
+        if($(window).width() > 500){
+            $('.columns1').syncHeight({ 'updateOnResize': true});
         }
+    });
+    // and to undo the syncing again run (here when the window is smaller than 500px):
+
+    var resize = function(){
+        if($(window).width() < 500){
+            $('.columns1').each(function() {
+                $(this).css('height', 'auto');
+                $(this).css('min-height', '');
+            });
+        } else {
+            $('.columns1').syncHeight();
+        }
+    };
+
+    $(window).resize(function(){
+        resize();
+        $(window).resize(function(){resize();});
     });
 
 Parameters:
