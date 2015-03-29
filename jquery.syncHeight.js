@@ -97,7 +97,9 @@
     // optional sync refresh on resize event ...
     if (options.updateOnResize === true) {
       $(window).bind('resize.syncHeight', function(){
-        $(e).syncHeight();
+        window.requestAnimationFrame(function(){
+            $(e).syncHeight();
+        });
       });
     }
     return this;
